@@ -7,7 +7,7 @@ FFT algorithm & code source: http://numerical.recipes/
 # [MATLAB Simulation]
 
 # Original
-![alt text](blob:https://imgur.com/47bf2e3c-a5f2-4947-8bcc-49a19d488974)
+![alt text](https://i.imgur.com/vBJmepc.png)
 
 # Real number domain result
 ![alt text](https://i.imgur.com/W00mfQn.png)
@@ -16,4 +16,4 @@ FFT algorithm & code source: http://numerical.recipes/
 ![alt text](https://i.imgur.com/qXGcfU4.png) 
 
 # Decrypted
-![alt text](blob:https://imgur.com/bf6457da-fba4-47c5-8211-3d9f0d80acd3)
+![alt text](https://i.imgur.com/CSGYoXT.png)
