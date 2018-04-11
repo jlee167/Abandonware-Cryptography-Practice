@@ -1,4 +1,4 @@
-# FFT_Image_Cryptography_C5502DSP
+# FFT_Image_Cryptography
 Project under reformation as software encryption program. (No serial communication available on the board without special jack, thus no way to export image to host computer)
 
 
