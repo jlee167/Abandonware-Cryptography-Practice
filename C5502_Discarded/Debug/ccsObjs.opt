@@ -1,0 +1,1 @@
+"./fft.obj" "./main.obj" "./sdram_test.obj" "../lnkx.cmd" -lcsl5502x.lib -lezdsp5502bsl.lib -lrts55x.lib 
