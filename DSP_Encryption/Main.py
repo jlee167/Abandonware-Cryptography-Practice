@@ -11,6 +11,8 @@ from img_data import img_data
 import chaosmap
 from math import e
 
+import pickle
+
 def scatter_plot(r,g,b):
     fig = plt.figure()
     plot = fig.add_subplot(1, 1, 1, projection="3d")  # 3D plot with scalar values in each axis
@@ -44,19 +46,46 @@ def decryption(image, seed_dec):
 
 #Top module
 def main():
-    img_file = np.array(Image.open('lena.ppm'))
+
     r = []
     g = []
     b = []
 
-    image = img_data(512,512)
-    image.capture(img_file)
-    image.RGB_sort()
 
-    encryption(image,0.88)
-    decryption(image,0.88)
-    plt.imshow(image.img)
-    plt.show()
+    while (1):
+        Operation = input("Command (DEC for decryption, ENC for encryption):")
+
+        if (Operation == "ENC"):
+            filename = "image" + "/" + input("Image file name:")
+            KEY = input("KEY (floating point between 0.0 and 1.0):")
+            print("Image " + filename + " registered.")
+            img_file = np.array(Image.open(filename))
+            image = img_data(512, 512)
+            image.capture(img_file)
+            image.RGB_sort()
+
+            encryption(image,float(KEY))
+            output_filename = input("Output Filename: ")
+            output_path = "encrypted/" + output_filename
+            pickle.dump(image, open(output_path, "wb"))
+            plt.imshow(image.img)
+            plt.show()
+
+        elif (Operation == "DEC"):
+            filename = "encrypted" + "/" + input("Encrypted file path:")
+            KEY = input("KEY (floating point between 0.0 and 1.0):")
+            image = pickle.load(open(filename, "rb"))
+            decryption(image,float(KEY))
+            plt.imshow(image.img)
+            plt.show()
+
+        elif (Operation == "quit"):
+            break
+
+        else:
+            pass
+
+
 
 
 if __name__ =='__main__':
