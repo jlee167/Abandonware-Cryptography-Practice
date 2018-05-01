@@ -1,13 +1,11 @@
 # Chaos map + FFT masking
-Project under reformation as software encryption program. (No serial communication available on the board without special jack, thus no way to export image to host computer)
+DSP board version is discarded due to support cut on legacy device C5502
 
-
-FFT algorithm & code source: http://numerical.recipes/
 
 # [MATLAB Simulation]
 
 # Original
-![alt text](https://i.imgur.com/vBJmepc.png)
+![alt text](https://i.imgur.com/U5zQqE8.jpg)
 
 # Real number domain result
 ![alt text](https://i.imgur.com/W00mfQn.png)
