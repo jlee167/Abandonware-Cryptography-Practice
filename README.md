@@ -7,11 +7,11 @@ DSP board version is discarded due to support cut on legacy device C5502
 # Original
 ![alt text](https://i.imgur.com/U5zQqE8.jpg)
 
-# Real number domain result
-![alt text](https://i.imgur.com/W00mfQn.png)
+# Encrypted with key 0.65
+![alt text](https://i.imgur.com/HW8vr5l.jpg)
 
-# Magnitude
-![alt text](https://i.imgur.com/qXGcfU4.png) 
+# Decrypted with almost identical key 0.65000001
+![alt text](https://i.imgur.com/Go4tJws.jpg) 
 
-# Decrypted
-![alt text](https://i.imgur.com/CSGYoXT.png)
+# Decrypted with identical key 0.65
+![alt text](https://i.imgur.com/hTGC9I4.jpg)
