@@ -2,7 +2,7 @@
 DSP board version is discarded due to support cut on legacy device C5502
 
 
-# [MATLAB Simulation]
+# [Python version release]
 
 # Original
 ![alt text](https://i.imgur.com/U5zQqE8.jpg)
