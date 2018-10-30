@@ -62,8 +62,12 @@ class ImgProcessor:
         for row in range(0, self.row_size):
             self.img_real.append([])
             for column in range (0, self.column_size):
-                self.img_real[row].append([numpy.uint8(self.RGBimage.R_real[row][column]), numpy.uint8(self.RGBimage.G_real[row][column]), numpy.uint8(self.RGBimage.B_real[row][column])])
-                self.img_real[row].append([numpy.uint8(self.RGBimage.R_real[row][column] >> 8), numpy.uint8(self.RGBimage.G_real[row][column] >> 8), numpy.uint8(self.RGBimage.B_real[row][column] >> 8)])
+                self.img_real[row].append([numpy.uint8(self.RGBimage.R_real[row][column]),
+                                           numpy.uint8(self.RGBimage.G_real[row][column]),
+                                           numpy.uint8(self.RGBimage.B_real[row][column])])
+                self.img_real[row].append([numpy.uint8(self.RGBimage.R_real[row][column] >> 8),
+                                           numpy.uint8(self.RGBimage.G_real[row][column] >> 8),
+                                           numpy.uint8(self.RGBimage.B_real[row][column] >> 8)])
         self.img_real = np.array(self.img_real)
 
         for row in range(0, self.row_size):
@@ -76,8 +80,7 @@ class ImgProcessor:
                                            numpy.uint8(self.RGBimage.G_imag[row][column] >> 8),
                                            numpy.uint8(self.RGBimage.B_imag[row][column] >> 8)])
         self.img_imag = np.array(self.img_imag)
-
-        self.RGBimage.R_SAVE = copy.copy(self.RGBimage.R)
+        self.RGBimage.R_SAVE = self.RGBimage.R
 
 
     def fft(self):
@@ -96,7 +99,7 @@ class ImgProcessor:
         self.RGBimage.G_imag = np.uint16(np.imag(self.RGBimage.G))
         self.RGBimage.B_imag = np.uint16(np.imag(self.RGBimage.B))
 
-    def wrap(self):
+    def write_to_image(self):
         self.img_real = []
         self.img_imag = []
 
@@ -151,12 +154,12 @@ class ImgProcessor:
 
         for row in range(0, self.row_size):
             for column in range (0, int(self.column_size*2)):
-                self.key_img1[row][column][0] = np.int32(self.key_img1[row][column][0])
-                self.key_img1[row][column][1] = np.int32(self.key_img1[row][column][1])
-                self.key_img1[row][column][2] = np.int32(self.key_img1[row][column][2])
-                self.key_img2[row][column][0] = np.int32(self.key_img2[row][column][0])
-                self.key_img2[row][column][1] = np.int32(self.key_img2[row][column][1])
-                self.key_img2[row][column][2] = np.int32(self.key_img2[row][column][2])
+                self.key_img1[row][column][0] = np.uint16(self.key_img1[row][column][0])
+                self.key_img1[row][column][1] = np.uint16(self.key_img1[row][column][1])
+                self.key_img1[row][column][2] = np.uint16(self.key_img1[row][column][2])
+                self.key_img2[row][column][0] = np.uint16(self.key_img2[row][column][0])
+                self.key_img2[row][column][1] = np.uint16(self.key_img2[row][column][1])
+                self.key_img2[row][column][2] = np.uint16(self.key_img2[row][column][2])
         self.clean()
 
         for row in range(0, self.row_size):
@@ -165,27 +168,27 @@ class ImgProcessor:
             self.RGBimage.B.append([])
             for column in range(0, self.column_size):
                 self.RGBimage.R[row].append(
-                                                numpy.uint16(self.key_img1[row][2*column][0] + self.key_img1[row][2*column+1][0] * 128) +
-                                                1j * numpy.uint16(self.key_img2[row][2*column][0] + self.key_img2[row][2*column+1][0] * 128 )
+                                                numpy.int16(self.key_img1[row][2*column][0] + self.key_img1[row][2*column+1][0] * (2 ** 8)) +
+                                                1j * numpy.int16(self.key_img2[row][2*column][0] + self.key_img2[row][2*column+1][0] * (2 ** 8) )
                                             )
                 self.RGBimage.G[row].append(
-                                            numpy.uint16(self.key_img1[row][2*column][1] + self.key_img1[row][2*column+1][1] * 128) +
-                                            1j * numpy.uint16(self.key_img2[row][2*column][1] + self.key_img2[row][2*column+1][1] * 128)
+                                            numpy.int16(self.key_img1[row][2*column][1] + self.key_img1[row][2*column+1][1] * (2 ** 8)) +
+                                            1j * numpy.int16(self.key_img2[row][2*column][1] + self.key_img2[row][2*column+1][1] * (2 ** 8))
                                             )
                 self.RGBimage.B[row].append(
-                                            self.key_img1[row][2*column][2] + self.key_img1[row][2*column+1][2] * 128 +
-                                            1j * self.sign_conversion(self.key_img2[row][2*column][2] + self.key_img2[row][2*column+1][2] * 128)
-                                            )
-                print(str(self.RGBimage.R_SAVE[row][column]) + " " + str(self.RGBimage.R[row][column]))
+                                            numpy.int16(self.key_img1[row][2*column][2] + self.key_img1[row][2*column+1][2] * (2 ** 8)) +
+                                            1j * numpy.int16(self.key_img2[row][2*column][2] + self.key_img2[row][2*column+1][2] * (2 ** 8))
+                )
+                #print(str(self.RGBimage.R_SAVE[row][column]) + " " + str(self.RGBimage.R[row][column]))
 
         unlock_key = KeyGenerator(row_size_in=512, column_size_in=512, seed_in=seed_dec)
         unlock_key.logistic_map_generation()
         self.fft()
         self.phase_unmask(unlock_key.key_map)
         self.recover()
-        self.wrap()
+        self.write_to_image()
 
     def showPixelData(self):
-        print("R Data\n" + self.R)
+        print("R Data \n" + self.R)
         print("G Data \n" + self.G)
         print("B Data \n" + self.B)
