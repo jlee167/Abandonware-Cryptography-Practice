@@ -2,12 +2,9 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QMainWindow
 from PyQt5.QtGui import QIcon, QPixmap, QImage
 from PIL import ImageQt, Image
-import gc
 import threading
 
-
 app = QApplication(sys.argv)
-
 
 class QtGUI (QMainWindow):
 
@@ -20,7 +17,7 @@ class QtGUI (QMainWindow):
         self.setWindowTitle('FFT Cryptographer')
 
         self.label = QLabel(self)
-        self.image = Image.open('image/lena.ppm')
+        self.image = Image.open('../../image/lena.ppm')
         self.image = self.image.resize((256, 256))
         self.image = ImageQt.ImageQt(self.image)
         self.pixmap = QPixmap.fromImage(self.image)
@@ -37,6 +34,8 @@ class QtGUI (QMainWindow):
         self.encrypt_btn = QPushButton("Encrypt", self)
         self.encrypt_btn.move(256, 256)
         self.encrypt_btn.clicked.connect(self.encrypt)
+        self.statBar = self.statusBar()
+        self.statBar.showMessage("Ready")
 
     def encrypt(self):
         self.encrypted_image = Image.open('lena.jpg')
@@ -51,12 +50,12 @@ class QtGUI (QMainWindow):
 
     def onClick_loadImage(self, filename):
         self.image = Image.open(filename)
-        self.image.resize(256,256)
-
+        self.showimage = ImageQt.ImageQt(self.image.resize((256, 256)))
+        self.update()
 
     def onClick_AES_ENC(self, filename, ):
-        self.encrypted_image =
+        self.image
 
 
 if __name__ == '__main__':
-    GUI_obj = QtGUI()
+    GUI_obj = QtGUI('1')
