@@ -179,7 +179,6 @@ class ImgProcessor:
                                             numpy.int16(self.key_img1[row][2*column][2] + self.key_img1[row][2*column+1][2] * (2 ** 8)) +
                                             1j * numpy.int16(self.key_img2[row][2*column][2] + self.key_img2[row][2*column+1][2] * (2 ** 8))
                 )
-                #print(str(self.RGBimage.R_SAVE[row][column]) + " " + str(self.RGBimage.R[row][column]))
 
         unlock_key = KeyGenerator(row_size_in=512, column_size_in=512, seed_in=seed_dec)
         unlock_key.logistic_map_generation()
