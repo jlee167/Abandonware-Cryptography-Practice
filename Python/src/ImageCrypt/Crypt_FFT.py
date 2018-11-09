@@ -1,7 +1,7 @@
 import numpy as np
 import numpy
 import gc
-from chaosmap import KeyGenerator
+from Python.src.ImageCrypt.chaosmap import KeyGenerator
 import copy
 
 
