@@ -15,22 +15,9 @@ class QtGUI (QMainWindow):
         super().__init__()
         self.BackendControl = backendobject()
         self.parent = 0
-        self.resize(2048, 2048)
+        self.resize(2048, 1024)
         self.move(300, 300)
         self.setWindowTitle('FFT Cryptographer')
-
-        """
-        self.label = QLabel()
-        self.image = Image.open('../../image/lena.ppm')
-        self.image = self.image.resize((256, 256))
-        #self.image = ImageQt.ImageQt(self.image)
-        self.image = QImage('../../image/lena.ppm').scaled(256, 256)
-        self.pixmap = QPixmap(self.image)
-        self.label.setPixmap(self.pixmap)
-        self.label.resize(256, 256)
-        self.label.move(0, 0)
-        """
-
         self.initUI()
         self.show()
         sys.exit(app.exec_())
@@ -39,44 +26,48 @@ class QtGUI (QMainWindow):
         self.statBar = self.statusBar()
         self.statBar.showMessage("Ready")
 
-        self.origImageGroup = QGroupBox("Original Image")
-        self.origImageGroup.move(200, 200)
-        self.origImageGroup.resize(600, 200)
-
         self.origFilePath = QLineEdit()
-        self.layout = QFormLayout()
+        self.label_filename = QLabel()
+        self.label_filename.setText("AES Source:")
+        self.label_filename.resize(200, 50)
         self.btn_filesearch = QPushButton("Search")
-        self.btn_filesearch.resize(50, 50)
         self.btn_filesearch.clicked.connect(self.onClick_loadImage)
-        self.layout.addRow(self.origFilePath, self.btn_filesearch)
+        self.file_io_box = QHBoxLayout()
+        self.file_io_box.addWidget(self.label_filename)
+        self.file_io_box.addWidget(self.origFilePath)
+        self.file_io_box.addWidget(self.btn_filesearch)
 
-        self.encrypt_key = QLineEdit()
-        self.encrypt_btn = QPushButton("Encrypt", self)
-        self.encrypt_btn.clicked.connect(self.onClick_AES_ENC)
-        self.layout.addRow(self.encrypt_key)
+        #AES Control and File I/O Widgets
+        self.label_AESKey = QLabel()
+        self.label_AESKey.setText("AES Key:")
+        self.label_AESKey.resize(200, 50)
+        self.AESencrypt_key = QLineEdit()
+        self.AESencrypt_btn = QPushButton("AES Encrypt", self)
+        self.AESencrypt_btn.clicked.connect(self.onClick_AES_ENC)
+        self.AESdecrypt_btn = QPushButton("AES Decrypt", self)
+        self.AESdecrypt_btn.clicked.connect(self.onClick_AES_DEC)
+        self.AES_layout = QHBoxLayout()
+        self.AES_layout.addWidget(self.label_AESKey)
+        self.AES_layout.addWidget(self.AESencrypt_key)
+        self.AES_layout.addWidget(self.AESdecrypt_btn)
+        self.AES_layout.addWidget(self.AESencrypt_btn)
 
-        self.decrypt_btn = QPushButton("Decrypt", self)
-        self.decrypt_btn.clicked.connect(self.onClick_AES_DEC)
-        self.layout.addRow(self.decrypt_btn, self.encrypt_btn)
+        #FFT Control and File I/O Widgets
+        self.FFTencrypt_btn = QPushButton("FFT Encrypt", self)
+        self.FFTencrypt_btn.clicked.connect(self.onClick_FFT_ENC)
+        self.FFTdecrypt_btn = QPushButton("FFT Decrypt", self)
+        self.FFTdecrypt_btn.clicked.connect(self.onClick_FFT_DEC)
 
         self.img_orig = QLabel()
         self.img_cipher = QLabel()
-        self.layout.addRow(self.img_orig, self.img_cipher)
-        """
-        self.image = Image.open('../../image/lena.ppm')
-        self.image = self.image.resize((256, 256))
-        #self.image = ImageQt.ImageQt(self.image)
-        self.image = QImage('../../image/lena.ppm').scaled(256, 256)
-        self.pixmap = QPixmap(self.image)
-        self.label.setPixmap(self.pixmap)
-        self.label.resize(256, 256)
-        self.label.move(0, 0)
-        """
-        #self.layout.addRow(self.label)
+        self.image_layout = QHBoxLayout()
+        self.image_layout.addWidget(self.img_orig)
+        self.image_layout.addWidget(self.img_cipher)
 
-        self.origImageGroup.setLayout(self.layout)
         self.mainLayout = QVBoxLayout()
-        self.mainLayout.addWidget(self.origImageGroup)
+        self.mainLayout.addLayout(self.file_io_box)
+        self.mainLayout.addLayout(self.AES_layout)
+        self.mainLayout.addLayout(self.image_layout)
         self.layoutcontiner = QWidget(self)
         self.layoutcontiner.resize(600, 500)
         self.layoutcontiner.setLayout(self.mainLayout)
@@ -91,18 +82,24 @@ class QtGUI (QMainWindow):
         self.update()
 
     def onClick_AES_ENC(self):
-        key = self.encrypt_key.text()
+        key = self.AESencrypt_key.text()
         self.BackendControl.OP_AES_ENC(self.image, key, "out.ppm")
         ciperpixmap = QPixmap(QImage("out.ppm").scaled(256, 256))
         self.img_cipher.setPixmap(ciperpixmap)
         self.update()
 
     def onClick_AES_DEC(self):
-        key = self.encrypt_key.text()
+        key = self.AESencrypt_key.text()
         self.BackendControl.OP_AES_DEC(Image.open("out.ppm"), key, "out.ppm")
         ciperpixmap = QPixmap(QImage("out.ppm").scaled(256, 256))
         self.img_cipher.setPixmap(ciperpixmap)
         self.update()
+
+    def onClick_FFT_ENC(self):
+        pass
+
+    def onClick_FFT_DEC(self):
+        pass
 
 if __name__ == '__main__':
     GUI_obj = QtGUI()

@@ -17,18 +17,18 @@ class backendobject:
         pass
 
     def OP_FFT_ENC(self, image, key):
-        ImgHandler = ImgProcessor(512, 512)
-        ImgHandler.encryption(np.array(image), float(key))
+        img_formatted = np.array(image)
+        ImgHandler = ImgProcessor(img_formatted.shape[0], img_formatted.shape[1])
+        ImgHandler.encryption(img_formatted, float(key))
         a = Image.fromarray(ImgHandler.img_real)
-        a.save("out.ppm")
+        a.save("FFTout.ppm")
         a = Image.fromarray(ImgHandler.img_imag)
-        a.save("out2.ppm")
+        a.save("FFTout2.ppm")
 
     def OP_FFT_DEC(self, image_r, image_i, key):
         ImgHandler = ImgProcessor(512, 512)
         img_real = np.array(image_r)
         img_imag = np.array(image_i)
-        KEY = input("KEY (floating point between 0.0 and 1.0):")
         ImgHandler.decryption(img_real, img_imag, float(key))
         out_img = Image.fromarray(ImgHandler.img_real)
         out_img.save("decrypted.ppm")

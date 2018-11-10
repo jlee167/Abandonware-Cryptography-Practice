@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>PyQt5 tutorial - learn GUI programming with Python and PyQt5</title>
+<link rel="stylesheet" href="PyQt5%20tutorial%20-%20learn%20GUI%20programming%20with%20Python%20and%20PyQt5_files/format3.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="PyQt, PyQt5, tutorial, programming, Python, learn PyQt5">
+<meta name="description" content="PyQt5 tutorial is an introductory tutorial to GUI
+programming with Python and PyQt5 library. The examples describe widgets, explain
+layout management, cover menus and toolbars, dialogs, events and signals, and
+show how to do painting and create a game.">
+<meta name="author" content="Jan Bodnar">
+
+<script id="facebook-jssdk" src="PyQt5%20tutorial%20-%20learn%20GUI%20programming%20with%20Python%20and%20PyQt5_files/sdk.js"></script><script id="twitter-wjs" src="PyQt5%20tutorial%20-%20learn%20GUI%20programming%20with%20Python%20and%20PyQt5_files/widgets.js"></script><script async="" src="PyQt5%20tutorial%20-%20learn%20GUI%20programming%20with%20Python%20and%20PyQt5_files/analytics.js"></script><script src="PyQt5%20tutorial%20-%20learn%20GUI%20programming%20with%20Python%20and%20PyQt5_files/platform.js" async="" defer="defer"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-5536206-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<link rel="stylesheet" type="text/css" href="PyQt5%20tutorial%20-%20learn%20GUI%20programming%20with%20Python%20and%20PyQt5_files/dark-floating.css"></head>
+
+<body><div class="cc_banner-wrapper "><div class="cc_banner cc_container cc_container--open"><a href="#null" data-cc-event="click:dismiss" target="_blank" class="cc_btn cc_btn_accept_all">Got it!</a><p class="cc_message">This website uses cookies to ensure you get the best experience on our website </p><a class="cc_logo" target="_blank" href="http://silktide.com/cookieconsent">Cookie Consent plugin for the EU cookie law</a></div></div>
+
+<div class="container">
+
+<div id="wide_ad" class="rtow">
+<script async="" src="PyQt5%20tutorial%20-%20learn%20GUI%20programming%20with%20Python%20and%20PyQt5_files/adsbygoogle.js"></script>
+<!-- 160x600, August 2011 -->
+<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-9706709751191532" data-ad-slot="2484182563"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<div id="ebooks" class="ltow">
+    
+<h2>Ebooks</h2>
+
+<ul>
+<li><a href="http://zetcode.com/ebooks/advancedpyqt5/">PyQt5 ebook</a></li>
+<li><a href="http://zetcode.com/ebooks/tkinter/">Tkinter ebook</a></li>
+<li><a href="http://zetcode.com/ebooks/sqlitepython/">SQLite Python</a></li>
+<li><a href="http://zetcode.com/ebooks/advancedwxpython/">wxPython ebook</a></li>
+<li><a href="http://zetcode.com/ebooks/windowsapi/">Windows API ebook</a></li>
+<li><a href="http://zetcode.com/ebooks/advancedjavaswing/">Java Swing ebook</a></li>
+<li><a href="http://zetcode.com/ebooks/mysqljava/">MySQL Java ebook</a></li>
+</ul>
+
+</div>
+
+<div class="content">
+
+
+<header>
+
+<nav>
+<a href="http://zetcode.com/" title="Home">Home</a>
+<a class="nav_r" title="Subscribe to ZetCode news" href="http://zetcode.us13.list-manage.com/subscribe?u=9def9ccd4c70dbbaf691f90fc&amp;id=6556210f80">Subscribe</a>
+</nav>
+
+</header>
+
+
+<h1>PyQt5 tutorial</h1>
+
+<p>
+This is PyQt5 tutorial. The tutorial is suited for beginners and intermediate programmers. 
+After reading this tutorial, you will be able to program non-trivial PyQt5 applications. 
+</p>
+
+<h2>Table of contents</h2>
+
+<nav>
+<ul>
+  <li><a href="http://zetcode.com/gui/pyqt5/introduction/">Introduction</a></li>
+  <li><a href="http://zetcode.com/gui/pyqt5/datetime/">Date and time</a></li>
+  <li><a href="http://zetcode.com/gui/pyqt5/firstprograms/">First programs</a></li>
+  <li><a href="http://zetcode.com/gui/pyqt5/menustoolbars/">Menus and toolbars</a></li>
+  <li><a href="http://zetcode.com/gui/pyqt5/layout/">Layout management</a></li>
+  <li><a href="http://zetcode.com/gui/pyqt5/eventssignals/">Events and signals</a></li>
+  <li><a href="http://zetcode.com/gui/pyqt5/dialogs/">Dialogs</a></li>
+  <li><a href="http://zetcode.com/gui/pyqt5/widgets/">Widgets</a></li>
+  <li><a href="http://zetcode.com/gui/pyqt5/widgets2/">Widgets II</a></li>
+  <li><a href="http://zetcode.com/gui/pyqt5/dragdrop/">Drag &amp; drop</a></li>
+  <li><a href="http://zetcode.com/gui/pyqt5/painting/">Painting</a></li>
+  <li><a href="http://zetcode.com/gui/pyqt5/customwidgets/">Custom widgets</a></li>
+  <li><a href="http://zetcode.com/gui/pyqt5/tetris/">The Tetris game</a></li>
+</ul>
+</nav>
+
+<h2>E-book</h2>
+
+<p>
+A unique <em>e-book</em> covering advanced 
+features of the PyQt5 library: <a href="http://zetcode.com/ebooks/advancedpyqt5/">Advanced PyQt5 e-book</a>.
+</p>
+
+<div class="social">
+
+<div class="fb-like" data-href="http://zetcode.com/gui/pyqt5/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
+<div class="g-plusone" data-size="medium"></div>
+
+<div class="twitter">
+<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+</div>
+
+</div>
+
+
+<h2>Related tutorials</h2>
+
+<p>
+<a href="http://zetcode.com/gui/qt5/">Qt5 tutorial</a> covers the Qt5 library in its native C++ language. 
+<a href="http://zetcode.com/gui/pyqt4/">PyQt4 tutorial</a> covers the earlier version of the PyQt library. 
+To refresh your knowledge of the Python language there is a 
+<a href="http://zetcode.com/lang/python/">Python tutorial</a> on ZetCode. <a href="http://zetcode.com/wxpython/">wxPython tutorial</a>, 
+<a href="http://zetcode.com/python/gtk/">Python Gtk tutorial</a>, and <a href="http://zetcode.com/gui/tkinter/">Tkinter tutorial</a> are
+tutorials for other popular Python GUI bindings. 
+</p>
+
+<div class="big_hor">
+<script async="" src="PyQt5%20tutorial%20-%20learn%20GUI%20programming%20with%20Python%20and%20PyQt5_files/adsbygoogle.js"></script>
+<!-- big_horizontal -->
+<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-9706709751191532" data-ad-slot="2904953388"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<footer>
+
+<div class="signature">
+<a href="http://zetcode.com/">ZetCode::</a> last modified January 10, 2018 <span class="copyright">© 2007 - 2018 Jan Bodnar</span>
+<span>Follow on <a href="https://www.facebook.com/zetcode7/">Facebook</a></span>
+</div>
+
+</footer>
+
+</div> <!-- content -->
+
+</div> <!-- container -->
+
+<!-- Silktide Cookie -->
+<script>
+    window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on our website",
+    "dismiss":"Got it!","learnMore":"More info","link":null,"theme":"dark-floating"};
+</script>
+
+<script src="PyQt5%20tutorial%20-%20learn%20GUI%20programming%20with%20Python%20and%20PyQt5_files/cookieconsent.js"></script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+</body></html>
