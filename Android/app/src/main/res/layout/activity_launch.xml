@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LaunchActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_launch"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="0dp"
+        android:layout_height="412dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:columnCount="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.76"
+        app:rowCount="2"
+        app:useDefaultMargins="true">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal"
+            app:layout_rowWeight="1">
+
+            <Button
+                android:id="@+id/EncryptBtn"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:background="@drawable/chaos"
+
+                app:layout_gravity="fill_horizontal"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="174dp" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Encrypt"
+                app:bootstrapBrand="success"
+                app:bootstrapSize="lg"
+                app:buttonMode="regular"
+                app:roundedCorners="false"
+                app:showOutline="false"
+                tools:layout_editor_absoluteX="12dp"
+                tools:layout_editor_absoluteY="472dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal"
+            app:layout_rowWeight="1">
+
+            <Button
+                android:id="@+id/DecryptBtn"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:background="@drawable/unlock"
+                app:layout_columnWeight="1"
+                app:layout_gravity="fill_horizontal"
+                app:layout_rowWeight="5"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="174dp" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Decrypt"
+                app:bootstrapBrand="success"
+                app:bootstrapSize="lg"
+                app:buttonMode="regular"
+                app:layout_columnSpan="1"
+                app:layout_rowSpan="1"
+                app:roundedCorners="false"
+                app:showOutline="false"
+                tools:layout_editor_absoluteX="12dp"
+                tools:layout_editor_absoluteY="472dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal"
+            app:layout_rowWeight="1">
+
+            <Button
+                android:id="@+id/HideBtn"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:background="@drawable/upload"
+                app:layout_columnWeight="1"
+                app:layout_gravity="fill_horizontal"
+                app:layout_rowWeight="5"
+                tools:layout_editor_absoluteX="12dp"
+                tools:layout_editor_absoluteY="81dp" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Hide behind"
+                app:bootstrapBrand="success"
+                app:bootstrapSize="lg"
+                app:buttonMode="regular"
+                app:layout_columnSpan="1"
+                app:layout_rowSpan="1"
+                app:roundedCorners="false"
+                app:showOutline="false"
+                tools:layout_editor_absoluteX="12dp"
+                tools:layout_editor_absoluteY="155dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal"
+            app:layout_rowWeight="1">
+
+            <Button
+                android:id="@+id/CloudBtn"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:background="@drawable/upload"
+                app:layout_columnWeight="1"
+                app:layout_gravity="fill_horizontal"
+                app:layout_row="5"
+                tools:layout_editor_absoluteX="12dp"
+                tools:layout_editor_absoluteY="81dp" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/UploadBtn"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Upload"
+                app:bootstrapBrand="success"
+                app:bootstrapSize="lg"
+                app:buttonMode="regular"
+                app:layout_columnSpan="1"
+                app:layout_rowSpan="1"
+                app:roundedCorners="false"
+                app:showOutline="false"
+                tools:layout_editor_absoluteX="12dp"
+                tools:layout_editor_absoluteY="155dp" />
+        </LinearLayout>
+    </android.support.v7.widget.GridLayout>
+
+
+</android.support.constraint.ConstraintLayout>
