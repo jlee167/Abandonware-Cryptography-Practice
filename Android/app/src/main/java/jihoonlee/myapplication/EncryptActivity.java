@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -70,6 +71,8 @@ public class EncryptActivity extends AppCompatActivity {
 
     // Encryption type specification
     private CryptType encryptionType;
+
+    private FloatingActionButton SaveBtn;
 
     Cipher cipher;
 
@@ -181,7 +184,6 @@ public class EncryptActivity extends AppCompatActivity {
 
                     ImageBitmap.setPixels(pixels, 0,width,0,0,width,height);
                     target_image.setImageBitmap(ImageBitmap);
-
 
                 }
             }
